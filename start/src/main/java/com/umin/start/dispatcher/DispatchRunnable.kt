@@ -2,7 +2,7 @@ package com.umin.start.dispatcher
 
 import android.os.Looper
 import android.os.Process
-import androidx.core.os.TraceCompat
+import com.umin.start.TimeMonitorManager
 import com.umin.start.dispatcher.utils.DispatcherLog
 
 /**
@@ -22,7 +22,7 @@ class DispatchRunnable : Runnable {
     }
 
     override fun run() {
-        TraceCompat.beginSection(mTask!!.javaClass.simpleName)
+        TimeMonitorManager.instance?.startMonitor()
         DispatcherLog.i(
             mTask!!.javaClass.simpleName
                     + " begin run" + "  Situation  ${TaskStat.currentSituation}"
@@ -51,7 +51,7 @@ class DispatchRunnable : Runnable {
             }
             DispatcherLog.i(mTask!!.javaClass.simpleName + " finish")
         }
-        TraceCompat.endSection()
+        TimeMonitorManager.instance?.endMonitor("DispatchRunnable invoke : ${mTask!!.javaClass.simpleName}")
     }
 
     /**

@@ -12,11 +12,11 @@ import java.util.*
  * @instruction：延时初始化，IdleHandler启动器
  */
 class DelayDispatcher {
-    private val mDelayTasks: Queue<Task> = LinkedList<Task>()
+    private val mDelayTasks: Queue<Task> = LinkedList()
 
     private val mIdleHandler = IdleHandler {
         if (mDelayTasks.size > 0) {
-            val task: Task = mDelayTasks.poll()
+            val task: Task? = mDelayTasks.poll()
             DispatchRunnable(task).run()
         }
         !mDelayTasks.isEmpty()
@@ -25,7 +25,7 @@ class DelayDispatcher {
     /**
      * 添加延时任务
      */
-    fun addTask(task: Task): DelayDispatcher? {
+    fun addTask(task: Task): DelayDispatcher {
         mDelayTasks.add(task)
         return this
     }

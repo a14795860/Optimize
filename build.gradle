@@ -46,6 +46,7 @@ allprojects {
         jcenter() // Warning: this repository is going to shut down soon
         maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
         maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven { url 'https://jitpack.io' }
     }
 }
 

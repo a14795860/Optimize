@@ -1,6 +1,5 @@
 package com.umin.start.dispatcher.topologicalSort
 
-import androidx.collection.ArraySet
 import com.umin.start.dispatcher.Task
 import com.umin.start.dispatcher.utils.DispatcherLog
 import java.util.*
@@ -19,7 +18,7 @@ object TaskSortUtil {
         clsLaunchTasks: List<Class<out Task>>
     ): MutableList<Task?> {
         val makeTime = System.currentTimeMillis()
-        val dependSet: MutableSet<Int> = ArraySet()
+        val dependSet: MutableSet<Int> = mutableSetOf()
         val graph = Graph(
             originTasks!!.size
         )

@@ -27,7 +27,7 @@ abstract class Task : ITask {
     var isSend // Task是否已经被分发
             = false
     private val mDepends =
-        CountDownLatch(if (dependsOn() == null) 0 else dependsOn()!!.size) // 当前Task依赖的Task数量（需要等待被依赖的Task执行完毕才能执行自己），默认没有依赖
+        CountDownLatch(dependsOn()?.size ?: 0) // 当前Task依赖的Task数量（需要等待被依赖的Task执行完毕才能执行自己），默认没有依赖
 
     /**
      * 当前Task等待，让依赖的Task先执行
@@ -53,7 +53,7 @@ abstract class Task : ITask {
      *
      * @return
      */
-    fun needRunAsSoon(): Boolean {
+    open fun needRunAsSoon(): Boolean {
         return false
     }
 

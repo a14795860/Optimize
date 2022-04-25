@@ -2,6 +2,7 @@ package com.umin.optimize
 
 import android.app.Application
 import com.umin.optimize.task.*
+import com.umin.start.delay.DelayDispatcher
 import com.umin.start.dispatcher.TaskDispatcher
 
 class App : Application() {
@@ -20,12 +21,13 @@ class App : Application() {
         //方式二、启动器
         TaskDispatcher.init(this)
         TaskDispatcher.newInstance()
+            .addTask(FrescoTask())
             .addTask(RouterTask())
             .addTask(LoadSirTask())
             .addTask(BuglyTask())
             .addTask(LoadAppIdTask())
             .addTask(WeChatPayTask())
-
+            .start()
 
         TimeMonitorManager.instance?.endMonitor("APP onCreate")
 
