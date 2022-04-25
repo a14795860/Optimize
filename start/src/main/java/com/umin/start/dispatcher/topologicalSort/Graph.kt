@@ -55,9 +55,6 @@ class Graph(private val mVerticeCount: Int) {
     }
 
     init {
-        mAdj = arrayOf<MutableList<Int>>()
-        for (i in 0 until mVerticeCount) {
-            mAdj[i] = ArrayList()
-        }
+        mAdj = Array(mVerticeCount) { ArrayList() }
     }
 }
