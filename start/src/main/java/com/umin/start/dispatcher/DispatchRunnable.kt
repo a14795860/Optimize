@@ -22,7 +22,7 @@ class DispatchRunnable : Runnable {
     }
 
     override fun run() {
-        TimeMonitorManager.instance?.startMonitor()
+        if(DispatcherLog.isDebug) TimeMonitorManager.instance?.startMonitor()
         DispatcherLog.i(
             mTask!!.javaClass.simpleName
                     + " begin run" + "  Situation  ${TaskStat.currentSituation}"
@@ -51,7 +51,7 @@ class DispatchRunnable : Runnable {
             }
             DispatcherLog.i(mTask!!.javaClass.simpleName + " finish")
         }
-        TimeMonitorManager.instance?.endMonitor("DispatchRunnable invoke : ${mTask!!.javaClass.simpleName}")
+        if(DispatcherLog.isDebug) TimeMonitorManager.instance?.endMonitor("DispatchRunnable invoke : ${mTask!!.javaClass.simpleName}")
     }
 
     /**

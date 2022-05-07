@@ -43,10 +43,7 @@ class TimeMonitorManager private constructor() {
         if (mTimeTagMap.size <= 0) {
             return
         }
-        for (tag in mTimeTagMap.keys) {
-            val time = mTimeTagMap[tag]!!
-            Log.d(TAG, "$tag: $time")
-        }
+        mTimeTagMap.entries.forEach { Log.d(TAG, "${it.key}: ${it.value}") }
     }
 
     companion object {

@@ -2,7 +2,7 @@ package com.umin.optimize
 
 import android.app.Application
 import com.umin.optimize.task.*
-import com.umin.start.delay.DelayDispatcher
+import com.umin.start.TimeMonitorManager
 import com.umin.start.dispatcher.TaskDispatcher
 
 class App : Application() {
